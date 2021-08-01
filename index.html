@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta sprk="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/building512.png">
+  <title>Spatial Calculator</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="container">
+
+      <a class="logo" ref="#">
+        <img src="images/building512.png" alt="bldg logo">
+        <ref="#">Spatial<span>Calculator</span>
+      </a>
+
+
+      <img id="mobile-cta" class="mobile-menu" src="images/menu.svg" alt="open navigation" />
+
+      <nav>
+        <img id="mobile-exit" class="mobile-menu-exit" src="images/exit.svg" alt="close navigation" />
+        <ul class="primary-nav">
+          <li class="current"><a href="#">Home</a></li>
+          <li><a href="#">Full Version</a></li>
+        </ul>
+
+        <ul class="secondary-nav">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <section class="hero">
+
+    <div class="heading">
+      <p class="subhead">NBC 2015</p>
+      <h1>Spatial separation calculator</h1>
+    </div>
+
+    <div class="hero-input">
+      <ul class="input-list">
+
+        <form action="">
+          <div class = "form-group">
+            <label for="sprk">Sprinklered</label>
+          <input type="checkbox" id="sprk" sprk="sprk" />
+          </div>
+          
+          <div class = "form-group">
+            <label for="occupancy">Occupancy</label>
+            <select name="occupancy" id="occupancy">
+              <option value="none"></option>
+              <option value="A">Group A</option>
+              <option value="B">Group B</option>
+              <option value="C">Group C</option>
+              <option value="D">Group D</option>
+              <option value="E">Group E</option>
+              <option value="F-1">Group F, Division 1</option>
+              <option value="F-2">Group F, Division 2</option>
+              <option value="F-3">Group F, Division 3</option>
+            </select>
+          </div>
+
+          <div class = "form-group">
+            <label for="height">Height</label>
+            <input type="number" id="height" height="height" min = "0" />
+          </div>
+                    
+          <div class = "form-group">
+            <label for="width">Width </label>
+            <input type="number" id="width" width="width" min = "0"/>
+          </div>
+          
+          <div class = "form-group">
+            <label for="area-upo">Area of Unprotected Openings</label>
+            <input type="number" id="area-upo" area-upo="area-upo" min = "0"/>
+          </div>
+
+          <div class = "form-group">
+            <label for="ld">Limiting Distance</label>
+            <input type="number" id="ld" ld="ld" min = "0"/>
+          </div>
+
+        </form>
+      </ul>
+    </div>
+
+    <input class="calculate-cta" type="button" id="calculate" value="Calculate" />
+
+  </section>
+
+  <section class="features-section">
+    <div class="container">
+      <ul class="features-list">
+        <li>% Unprotected Openings</li>
+        <li>Actual Openings</li>
+        <li>Cladding Requirements</li>
+        <li>Construction Requirements</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="building-codes">
+    <div class="container">
+      <ul class="building-code-list">
+        <li>
+          <a href="https://www.bccodes.ca/building-code.html">
+            <img src="images/bcbc2018cover.jpg" alt="bcbc 2018" />
+          </a>
+        </li>
+        <li>
+          <a href="https://nrc-publications.canada.ca/eng/view/object/?id=c8876272-9028-4358-9b42-6974ba258d99">
+            <img src="images/2015_nbc_cover.jpg" alt="nbc 2015">
+          </a>
+        </li>
+        <li>
+          <a href="https://www.alberta.ca/building-codes-and-standards.aspx">
+            <img src="images/2014_abc_cover.jpg" alt="abc 2014">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-left">
+        <h2>Contact</h2>
+        <form action="">
+          <label for="name">Name</label>
+          <input type="name" id="name" name="name" />
+
+          <label for="message">Message</label>
+          <textarea sprk="message" id="message" cols="30" rows="10"></textarea>
+
+          <input type="submit" class="send-message-cta" value="Send message" />
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+
+    const mobileBtn = document.getElementById("mobile-cta");
+    const nav = document.querySelector("nav");
+    const mobileBtnExit = document.getElementById("mobile-exit");
+
+    mobileBtn.addEventListener("click", () => {
+      nav.classList.add("menu-btn");
+    });
+
+    mobileBtnExit.addEventListener("click", () => {
+      nav.classList.remove("menu-btn");
+    });
+
+  </script>
+</body>
+
+</html>
