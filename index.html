@@ -48,12 +48,13 @@
       <ul class="input-list">
 
         <form action="">
-          <div class = "form-group">
-            <label for="sprk">Sprinklered</label>
-          <input type="checkbox" id="sprk" sprk="sprk" />
+          <div class="form-group">
+            <label for="sprk">Sprinklered
+              <input class="check-sprk" type="checkbox" id="sprk" sprk="sprk" />
+            </label>
           </div>
-          
-          <div class = "form-group">
+
+          <div class="form-group">
             <label for="occupancy">Occupancy</label>
             <select name="occupancy" id="occupancy">
               <option value="none"></option>
@@ -68,24 +69,24 @@
             </select>
           </div>
 
-          <div class = "form-group">
+          <div class="form-group">
             <label for="height">Height</label>
-            <input type="number" id="height" height="height" min = "0" />
-          </div>
-                    
-          <div class = "form-group">
-            <label for="width">Width </label>
-            <input type="number" id="width" width="width" min = "0"/>
-          </div>
-          
-          <div class = "form-group">
-            <label for="area-upo">Area of Unprotected Openings</label>
-            <input type="number" id="area-upo" area-upo="area-upo" min = "0"/>
+            <input type="number" id="height" height="height" min="0" />
           </div>
 
-          <div class = "form-group">
+          <div class="form-group">
+            <label for="width">Width </label>
+            <input type="number" id="width" width="width" min="0" />
+          </div>
+
+          <div class="form-group">
+            <label for="area-upo">Area of Unprotected Openings</label>
+            <input type="number" id="area-upo" area-upo="area-upo" min="0" />
+          </div>
+
+          <div class="form-group">
             <label for="ld">Limiting Distance</label>
-            <input type="number" id="ld" ld="ld" min = "0"/>
+            <input type="number" id="ld" ld="ld" min="0" />
           </div>
 
         </form>
@@ -93,6 +94,45 @@
     </div>
 
     <input class="calculate-cta" type="button" id="calculate" value="Calculate" />
+
+    <div class="hero-output">
+      <table class="table1" style="border:1px solid black;">
+
+        <tbody>
+          <tr>
+            <th>Interpolated Results</th>
+          </tr>
+          <tr>
+            <td class="table-content">Actual Unprotected Openings</td>
+            <td class="table-content">[actualUnArea]</td>
+          </tr>
+          <tr>
+            <td class="table-content">Permitted Unprotected Openings</td>
+            <td class="table-content">MEMBERS ONLY</td>
+          </tr>
+          <tr>
+            <th>Construction Requirements</th>
+          </tr>
+          <tr>
+            <td class="table-content">Fire Rating of Wall
+            </td>
+            <td class="table-content">[frr]</td>
+          </tr>
+
+          <tr>
+            <td class="table-content">Construction</td>
+            <td class="table-content">[constReq]</td>
+
+          </tr>
+          <tr>
+            <td class="table-content">Cladding
+            </td>
+            <td class="table-content">[cladding]</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
   </section>
 
