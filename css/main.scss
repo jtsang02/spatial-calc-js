@@ -64,86 +64,105 @@ section {
 
 .hero {
   text-align: center;
-}
 
-// work on this div
+  .heading {
+    .subhead {
+      text-transform: uppercase;
+      font-weight: bold;
+      color: gray;
+      letter-spacing: 0.2em;
+    }
 
-.heading {
-  .subhead {
-    text-transform: uppercase;
-    font-weight: bold;
-    color: gray;
-    letter-spacing: 0.2em;
+    h1 {
+      text-transform: uppercase;
+      font-size: 2.5em;
+      line-height: 1.3;
+      margin-top: 0.2em;
+      margin-bottom: 0.2em;
+    }
   }
 
-  h1 {
-    text-transform: uppercase;
-    font-size: 2.5em;
-    line-height: 1.3;
-    margin-top: 0.2em;
-    margin-bottom: 0.2em;
-  }
-}
-
-.hero-input {
-
-  width: 450px;
-  margin:auto;
-  display: grid;
-
-  .form-group {
+  .hero-input {
     width: 450px;
-    max-width: 450px;
-    
-    .check-sprk {
-      position: relative;
-      margin-left: 13.4em;
-      margin-top: 0.8em;
-      margin-bottom: 1.5em;
-      width: 1.5em;
-      height: 1.5em;
-    }
+    margin: auto;
+    display: grid;
 
-    label {
-      text-align: left;
-      font-weight: 550;
-      width: 70%;
+    .form-group {
+      width: 450px;
+      max-width: 450px;
+
+      [type="checkbox"] {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 2em;
+        margin-top: 0.6em;
+        width: 1.2em;
+        height: 1.2em;
+      }
+
+      label {
+        display: block;
+        text-align: left;
+        font-weight: 550;
+        font-size: 1em;
+        width: 70%;
+        margin: auto;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+      }
+
+      select {
+        width: 70%;
+        height: 2.5em;
+        margin-bottom: 0.8em;
+      }
+
+      input {
+        width: 70%;
+        height: 2.5em;
+      }
+    }
+  }
+
+  .calculate-cta {
+    width: 450px;
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 0.5em 1.3em;
+    margin-top: 1em;
+    font-size: 1.5em;
+    border-radius: 5em;
+    font-weight: bold;
+
+    &:hover {
+      cursor: pointer;
+      background: #20272e;
+    }
+  }
+
+  .hero-output {
+
+    .table1 {
       margin: auto;
-      margin-top: 0.3em;
-      margin-bottom: 0.3em;
-    }
+      margin-top: 1em;
+      padding: 0.5em;
 
-    select {
-      width: 70%;
-      height: 2.5em;
-      margin-bottom: 0.8em;
-    }
+      .table-header {
+        text-align: left;
+      }
 
-    input {
-      width: 70%;
-      height: 2.5em;
+      .table-content {
+        text-align: left;
+        font-size: 1em;
+      }
+
+      .table-result {
+        text-align: right;
+      }
     }
   }
 }
-
-.calculate-cta {
-  width: 450px;
-  background: var(--primary-color);
-  color: white;
-  text-align: center;
-  padding: 0.5em 1.3em;
-  margin-top: 1em;
-  font-size: 1.5em;
-  border-radius: 5em;
-  font-weight: bold;
-
-  &:hover {
-    cursor: pointer;
-    background:#20272e; 
-  }
-}
-
-// up to here
 
 section.features-section {
   background: #20272e;
@@ -202,38 +221,33 @@ section.building-codes {
   }
 }
 
-h2 {
-  font-size: 2em;
-}
+section.contact-section {
+  h2 {
+    font-size: 2em;
+  }
 
-label {
-  display: block;
-  font-size: 1.2em;
-  margin-bottom: 0.5em;
-}
+  textarea {
+    width: 550px;
+    padding: 0.8em;
+    margin-bottom: 1em;
+    border-radius: 0.3em;
+    border: 1px solid grey;
+    box-sizing: border-box;
+  }
 
-input,
-textarea {
-  width: 100%;
-  padding: 0.8em;
-  margin-bottom: 1em;
-  border-radius: 0.3em;
-  border: 1px solid grey;
-  box-sizing: border-box;
-}
-
-input[type="submit"] {
-  background-color: var(--primary-color);
-  color: white;
-  font-weight: bold;
-  font-size: 1.3em;
-  border: none;
-  margin-bottom: 5em;
-  border-radius: 5em;
-  display: inline-block;
-  padding: 0.8em 2em;
-  width: unset;
-  cursor: pointer;
+  input[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    border: none;
+    margin-bottom: 5em;
+    border-radius: 5em;
+    display: inline-block;
+    padding: 0.8em 2em;
+    width: unset;
+    cursor: pointer;
+  }
 }
 
 iframe {
@@ -281,7 +295,7 @@ nav {
   cursor: pointer;
 }
 
-// increase width 
+// increase width
 
 @media only screen and (min-width: 768px) {
   .mobile-menu,
@@ -320,11 +334,9 @@ nav {
     li.current a {
       font-weight: bold;
     }
-
   }
 
   .hero-input {
     display: inline-block;
   }
-
 }

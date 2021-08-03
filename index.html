@@ -50,7 +50,7 @@
         <form action="">
           <div class="form-group">
             <label for="sprk">Sprinklered
-              <input class="check-sprk" type="checkbox" id="sprk" sprk="sprk" />
+              <input type="checkbox" id="sprk" sprk="sprk" />
             </label>
           </div>
 
@@ -100,34 +100,34 @@
 
         <tbody>
           <tr>
-            <th>Interpolated Results</th>
+            <th class="table-header">Openings</th>
           </tr>
           <tr>
             <td class="table-content">Actual Unprotected Openings</td>
-            <td class="table-content">[actualUnArea]</td>
+            <td class="table-result">[actualUPO]</td>
           </tr>
           <tr>
             <td class="table-content">Permitted Unprotected Openings</td>
-            <td class="table-content">MEMBERS ONLY</td>
+            <td class="table-result">[UPO]</td>
           </tr>
           <tr>
-            <th>Construction Requirements</th>
+            <th class="table-header">Construction Requirements</th>
           </tr>
           <tr>
             <td class="table-content">Fire Rating of Wall
             </td>
-            <td class="table-content">[frr]</td>
+            <td class="table-result">[frr]</td>
           </tr>
 
           <tr>
             <td class="table-content">Construction</td>
-            <td class="table-content">[constReq]</td>
+            <td class="table-result">[const]</td>
 
           </tr>
           <tr>
             <td class="table-content">Cladding
             </td>
-            <td class="table-content">[cladding]</td>
+            <td class="table-result">[clad]</td>
 
           </tr>
         </tbody>
@@ -171,15 +171,10 @@
 
   <section class="contact-section">
     <div class="container">
-      <div class="contact-left">
+      <div class="contact">
         <h2>Contact</h2>
         <form action="">
-          <label for="name">Name</label>
-          <input type="name" id="name" name="name" />
-
-          <label for="message">Message</label>
-          <textarea sprk="message" id="message" cols="30" rows="10"></textarea>
-
+          <textarea name="message" id="message" cols="30" rows="10"></textarea>
           <input type="submit" class="send-message-cta" value="Send message" />
         </form>
       </div>

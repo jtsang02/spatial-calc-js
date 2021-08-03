@@ -68,14 +68,14 @@ section {
   text-align: center;
 }
 
-.heading .subhead {
+.hero .heading .subhead {
   text-transform: uppercase;
   font-weight: bold;
   color: gray;
   letter-spacing: 0.2em;
 }
 
-.heading h1 {
+.hero .heading h1 {
   text-transform: uppercase;
   font-size: 2.5em;
   line-height: 1.3;
@@ -83,48 +83,50 @@ section {
   margin-bottom: 0.2em;
 }
 
-.hero-input {
+.hero .hero-input {
   width: 450px;
   margin: auto;
   display: -ms-grid;
   display: grid;
 }
 
-.hero-input .form-group {
+.hero .hero-input .form-group {
   width: 450px;
   max-width: 450px;
 }
 
-.hero-input .form-group .check-sprk {
-  position: relative;
-  margin-left: 13.4em;
-  margin-top: 0.8em;
-  margin-bottom: 1.5em;
-  width: 1.5em;
-  height: 1.5em;
+.hero .hero-input .form-group [type="checkbox"] {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 2em;
+  margin-top: 0.6em;
+  width: 1.2em;
+  height: 1.2em;
 }
 
-.hero-input .form-group label {
+.hero .hero-input .form-group label {
+  display: block;
   text-align: left;
   font-weight: 550;
+  font-size: 1em;
   width: 70%;
   margin: auto;
   margin-top: 0.3em;
   margin-bottom: 0.3em;
 }
 
-.hero-input .form-group select {
+.hero .hero-input .form-group select {
   width: 70%;
   height: 2.5em;
   margin-bottom: 0.8em;
 }
 
-.hero-input .form-group input {
+.hero .hero-input .form-group input {
   width: 70%;
   height: 2.5em;
 }
 
-.calculate-cta {
+.hero .calculate-cta {
   width: 450px;
   background: var(--primary-color);
   color: white;
@@ -136,9 +138,28 @@ section {
   font-weight: bold;
 }
 
-.calculate-cta:hover {
+.hero .calculate-cta:hover {
   cursor: pointer;
   background: #20272e;
+}
+
+.hero .hero-output .table1 {
+  margin: auto;
+  margin-top: 1em;
+  padding: 0.5em;
+}
+
+.hero .hero-output .table1 .table-header {
+  text-align: left;
+}
+
+.hero .hero-output .table1 .table-content {
+  text-align: left;
+  font-size: 1em;
+}
+
+.hero .hero-output .table1 .table-result {
+  text-align: right;
 }
 
 section.features-section {
@@ -204,19 +225,12 @@ section.building-codes .container ul.building-code-list li img {
   margin: auto;
 }
 
-h2 {
+section.contact-section h2 {
   font-size: 2em;
 }
 
-label {
-  display: block;
-  font-size: 1.2em;
-  margin-bottom: 0.5em;
-}
-
-input,
-textarea {
-  width: 100%;
+section.contact-section textarea {
+  width: 550px;
   padding: 0.8em;
   margin-bottom: 1em;
   border-radius: 0.3em;
@@ -225,7 +239,7 @@ textarea {
           box-sizing: border-box;
 }
 
-input[type="submit"] {
+section.contact-section input[type="submit"] {
   background-color: var(--primary-color);
   color: white;
   font-weight: bold;
