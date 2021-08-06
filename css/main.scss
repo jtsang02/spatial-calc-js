@@ -89,7 +89,9 @@ section {
   .hero-input {
     margin: auto;
     width: 300px;
-
+    padding: 1em;
+    border-style: so;
+    
     .form-group {
       [type="checkbox"] {
         vertical-align: middle;
@@ -144,6 +146,7 @@ section {
   .hero-output {
     width: 400px;
     margin: auto;
+    padding: 1em;
 
     .table-header {
       padding: 0.5em 0;

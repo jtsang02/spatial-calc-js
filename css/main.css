@@ -91,6 +91,8 @@ section {
 .hero .hero-input {
   margin: auto;
   width: 300px;
+  padding: 1em;
+  border-style: so;
 }
 
 .hero .hero-input .form-group [type="checkbox"] {
@@ -144,6 +146,7 @@ section {
 .hero .hero-output {
   width: 400px;
   margin: auto;
+  padding: 1em;
 }
 
 .hero .hero-output .table-header {
