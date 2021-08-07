@@ -19,7 +19,7 @@ class Compartment {
                 //this.constr = constr;
                 //this.clad = clad;
               }
-          
+    
   hazard () {
     if(this.group === "E" || this.group === "F-1" || this.group === "F-2")
       return true;
@@ -28,21 +28,38 @@ class Compartment {
   }
   
   area () {
-    return this.h*this.w;
+    let h = this.h;
+    let w = this.w;
+    return h*w;
   }
 
   ratio () {
-    if (h/w > w/h)
-      return h/w;
-    else
-      return w/h;
+    let h = this.h;
+    let w = this.w;
+
+		if (h/w > w/h)
+			return h/w;
+		else
+			return w/h;
   }
 
+  ratioCode(){
+    let r = this.ratio();
+    if (r < 3)
+      return 1;
+    else if (r <=10)
+      return 2;
+    else
+      return 3;
+  }
 }
 
 let comp1 = new Compartment(2, 4, 5, 10, true, "D");
-console.log = "hazard is " + myCar.hazard();
-console.log = "area is " + myCar.area();
+let comp2 = new Compartment(3, 12, 5, 10, true, "E");
+
+console.log = "hazard is " + comp1.hazard();
+console.log = "area is " + comp1.area();
+console.log = "ratio is " + comp1.ratio();
 
 
 mobileBtn.addEventListener("click", () => {
