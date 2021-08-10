@@ -48,7 +48,7 @@ class Compartment {
     var x, y, shift_y, z;
     var LD1, LD2, area1, area2;
     var u1, u2, u3, u4, u;
-    var table;   
+    //var table;   
 
     if (this.sprk) {
 
@@ -58,7 +58,7 @@ class Compartment {
       if (this.hazard) {        // table 3.2.3.1.E
         rowSize = 15;
         columnSize = 20;
-        table = "tableE.txt";
+        table = "src/tableE.txt";
         maxLD = 15;
         maxArea = 200;
       }
@@ -66,7 +66,7 @@ class Compartment {
       if (!this.hazard) {        // table 3.2.3.1.D
         rowSize = 14;
         columnSize = 14;
-        table = "tableD.txt";
+        table = "src/tableD.txt";
         maxLD = 9;
         maxArea = 150;
       }
@@ -80,50 +80,53 @@ class Compartment {
 
       if (this.hazard) {      // table 3.2.3.1.C
         columnSize = 33;
-        table = "tableC.txt";
+        table = "src/tableC.txt";
         maxLD = 70;
       }
 
       if (!this.hazard) {     // table 3.2.3.1.B
         columnSize = 29;
-        table = "tableB.txt";
+        table = "src/tableB.txt";
         maxLD = 50;
       }
     }
-
+    
     let spTable = [
     [0,		0,	1.2,	1.5,	2,	2.5,	3,	4,	5,	6	,7,	8,	9,	10000000],
-    [0,		0	,16	,24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
-    [0,		0	,16	,24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
-    [0,		0	,16	,24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
-    [0,		0	,16	,24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
-    [0,		0	,16	,24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
-    [0,		0	,16	,24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
-    [0,		0	,16	,24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
-    [0,		0	,16	,24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
-    [0,		0	,16	,24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
-    [0,		0	,16	,24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
-    [10,	0,	16,	24,	42,	66,	100,	100,	100,	100,	100,	100,	100,	100]];
-
+    [0,		0,  16, 24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
+    [10,	0,  16, 24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
+    [15,  0,	16,	20,	34,	50,	74,	100,	100,	100,	100,	100,	100,	100],
+    [20,	0,	16,	20,	30,	42,	60,	100,	100,	100,	100,	100, 100,	100],
+    [25,	0,	16,	18,	26,	38,	52,	90,	100,	100,	100,	100,	100,	100],
+    [30,	0,	14,	18,	24,	34,	46,	78,	100,	100,	100,	100,	100,	100],
+    [40,	0,	14,	16,	22,	30,	40,	64,	96,	100,	100,	100,	100,	100],
+    [50,	0,	14,	16,	20,	28,	36,	56,	82,	100,	100,	100,	100,	100],
+    [60,	0,	14,	16,	20,	26,	32,	50,	72,	98,	100,	100,	100,	100],
+    [80,	0,	14,	16,	18,	22,	28,	42,	58,	80,	100,	100,	100,	100],
+    [100,	0,	14,	16,	18,	22,	26,	36,	50,	68,	88,	100,	100,	100],
+    [150,	0,	14,	14,	16,	20,	22,	30,	40,	52,	66,	82,	100,	100],
+    [10000000,	0,	14,	14,	16,	20,	22,	30,	40,	52,	66,	82,	100,	100]];
+    
     /*
-    const spTable = [rowSize][columnSize];
-    var fr = new FileReader();
+    let textFile = fs.readFileSync(table, 'utf8');
+    let spTable = [rowSize][columnSize];
+
     for (var row = 0; row < rowSize; row++)
       for (var column = 0; column < columnSize; column++)
-        fr.readAsText("/src/" + table);  // does this work??
+        spTable[row][column] = values.shift() * 1;  // does this work??
     */
 
-    for (var i = 0; i < columnSize; i++)
-      if (this.LD >= spTable[0][i]){
+    for (let i = 0; i < columnSize; i++)
+      if (this.LD <= spTable[0][i]){
         x = i;
         LD1 = spTable[0][x];
-        LD2 = spTable[0][x+1];
+        LD2 = spTable[0][x + 1];
         if (this.LD == LD1)
           var exactLD = true;
       }
     
-    for (var j = 0; j < rowSize; j++)
-      if (this.area() >= spTable[j][0] && z == spTable[j][1]){
+    for (let j = 0; j < rowSize; j++)
+      if ((this.area() <= spTable[j][0]) && (z == spTable[j][1])){
         y = j;
         area1 = spTable[y][0];
         area2 = spTable[y + shift_y][0];
