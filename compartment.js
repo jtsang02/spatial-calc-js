@@ -41,7 +41,8 @@ class Compartment {
     var rowSize, columnSize, maxLD, maxArea;
     var x, y, shift_y, z;
     var LD1, LD2, area1, area2;
-    var u1, u2, u3, u4, u;
+    var a1, a2, a3, a4;
+    var LD = this.LD;
     //var table;   
 
     if (this.sprk) {
@@ -86,8 +87,8 @@ class Compartment {
     }
     
     let spTable = [
-    [0,		0,	1.2,	1.5,	2,	2.5,	3,	4,	5,	6	,7,	8,	9,	10000000],
-    [0,		0,  16, 24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
+    [0,		0,	1.2,	1.5,	2,	2.5,	3,	 4,	5,	6	,7,	8,	9,	10000000],
+    [0,		0,  16,   24,   42,	66,   100, 100,	100,	100,	100,	100,	100,	100],
     [10,	0,  16, 24	,42,	66,	100,	100,	100,	100,	100,	100,	100,	100],
     [15,  0,	16,	20,	34,	50,	74,	100,	100,	100,	100,	100,	100,	100],
     [20,	0,	16,	20,	30,	42,	60,	100,	100,	100,	100,	100, 100,	100],
@@ -101,8 +102,6 @@ class Compartment {
     [150,	0,	14,	14,	16,	20,	22,	30,	40,	52,	66,	82,	100,	100],
     [10000000,	0,	14,	14,	16,	20,	22,	30,	40,	52,	66,	82,	100,	100]];
 
-    console.log(spTable);
-    console.log(spTable[3][0]);
     /*
     let textFile = fs.readFileSync(table, 'utf8');
     let spTable = [rowSize][columnSize];
@@ -113,49 +112,63 @@ class Compartment {
     */
 
     for (let i = 0; i < columnSize; i++)
-      if (this.LD <= spTable[0][i]){
-        x = i;
+      if (LD <= spTable[0][i]){
+        x = i - 1;
         LD1 = spTable[0][x];
         LD2 = spTable[0][x + 1];
-        if (this.LD == LD1)
-          var exactLD = true;
+        break;
       }
-    
-    
+
+    console.log("LD1 = " + LD1);
+    console.log("LD2 = " + LD2);
+
     for (let j = 0; j < rowSize; j++)
-      if ((this.area() <= spTable[j][0]) && (z == spTable[j][1])){
-        y = j;
+      if (this.area() <= spTable[j][0] && z == spTable[j][1]){
+        y = j - 1;
         area1 = spTable[y][0];
         area2 = spTable[y + shift_y][0];
-        console.log(y);
-        console.log(area1);
-        console.log(area2);
-        if (this.area() == area1)
-          var exactArea = true;
+        break;
       }
-
-    u1 = spTable[y][x];
-    u2 = spTable[y][x + 1];
-    u3 = spTable[y + shift_y][x];
-    u4 = spTable[y + shift_y][x + 1];
     
-    if (exactLD && exactArea)
-      u = u1;
-
-    else if (exactLD || LD > maxLD)
-      u = (this.area() - area1) / (area2 - area1) * (u3 - u1) + u1;
-
-    else if (exactArea || this.area() > maxArea)
-      u = (LD - LD1) / (LD2 - LD1) * (u2 - u1) + u1;
+    console.log("area1 = " + area1);
+    console.log("area2 = " + area2);
     
-    else {
-      var temp1 = (LD - LD1) / (LD2 - LD1) * (u2 - u1) + u1;
-			var temp2 = (LD - LD1) / (LD2 - LD1) * (u4 - u3) + u3;
-			u = (this.area() - area1) / (area2 - area1) * (temp2 - temp1) + temp1;
+    a1 = spTable[y][x];
+    a2 = spTable[y][x + 1];
+    a3 = spTable[y + shift_y][x];
+    a4 = spTable[y + shift_y][x + 1];
+    
+    console.log("a1 = " + a1);
+    console.log("a2 = " + a2);
+    console.log("a3 = " + a3);
+    console.log("a4 = " + a4);
+
+    if (LD == LD1 && this.area() == area1){
+      u = a1;
+      console.log("case 1");
     }
-    return u;
+
+    else if (LD == LD1 || LD > maxLD){
+      u = (this.area() - area1) / (area2 - area1) * (a3 - a1) + a1;
+      console.log("case 2");
+    }
+
+    else if (this.area() == area1 || this.area() > maxArea){
+      u = (LD - LD1) / (LD2 - LD1) * (a2 - a1) + a1;
+      console.log("case 3");
+    }
+    else {
+      var temp1 = (LD - LD1) / (LD2 - LD1) * (a2 - a1) + a1;
+			var temp2 = (LD - LD1) / (LD2 - LD1) * (a4 - a3) + a3;
+			var a = (this.area() - area1) / (area2 - area1) * (temp2 - temp1) + temp1;
+      console.log("case 4");
+    }
+    return a;
   }
 }
 
-let comp1 = new Compartment(2, 5, 1.5, 10, true, "D");
-let comp2 = new Compartment(3, 12, 5, 10, false, "E");
+let comp1 = new Compartment(5, 5, 4, 10, true, "D"); // case 1
+let comp2 = new Compartment(3, 12, 5, 10, true, "D"); // case 2
+let comp3 = new Compartment(4, 10, 2.5, 8, true, "D"); // case 4
+let comp4 = new Compartment(3.2, 14.9, 5.2, 10, true, "D"); // case 4 - LD > 9
+let comp5 = new Compartment(10, 150, 10, 10, true, "D"); // case 4- areaMax, LD max 
