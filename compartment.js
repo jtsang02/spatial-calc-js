@@ -115,11 +115,27 @@ class Compartment {
     }
     return a;
   }
+
+  construction (p) {
+    if (this.getUO() >= 100)
+      return "none";
+    
+    else {
+      const limits = [10, 25, 50, 100];
+      for (let i = 0; i < 4; i++)
+        if (this.getUO() <= limits[i]){
+          if (this.hazard())
+            return constTable[i + 4][p];
+          else
+            return constTable[i][p];
+      }
+    }    
+  }
 }
 
 let comp1 = new Compartment(5, 5, 4, 10, false, "E"); // case 1
-let comp2 = new Compartment(3, 12, 5, 10, true, "D"); // case 2
+let comp2 = new Compartment(3, 12, 5, 10, true, "E"); // case 2
 let comp3 = new Compartment(4, 10, 2.5, 8, false, "F-3"); // case 4
 let comp4 = new Compartment(3.2, 14.9, 5.2, 10, false, "E"); // case 4 - LD > 9
 let comp5 = new Compartment(10, 1900, 13, 10, false, "F-1"); // case 4- areaMax, LD max
-let comp6 = new Compartment(10, 150, 10, 10, false, "F-2"); // case 4- areaMax, LD max
+let comp6 = new Compartment(10, 150, 10, 10, true, "C"); // case 4- areaMax, LD max

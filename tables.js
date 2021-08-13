@@ -149,4 +149,13 @@ const tableE = [
   [10000000, 0, 8, 8, 8, 8, 10, 14, 18, 22, 28, 34, 42, 50, 60, 68, 80, 92, 100, 100]
 ];
 
-
+const constTable = [
+  ['1h', 'Noncombustible', 'Noncombustible'],
+  ['1h', 'Combustible', 'Noncombustible'],
+  ['45min', 'Combustible', 'Noncombustible'],
+  ['45min', 'Combustible', 'Combustible'],
+  ['2h', 'Noncombustible', 'Noncombustible'],
+  ['2h', 'Combustible', 'Noncombustible'],
+  ['1h', 'Combustible', 'Noncombustible'],
+  ['1h', 'Combustible', 'Combustible']
+]
