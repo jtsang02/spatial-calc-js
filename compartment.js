@@ -9,133 +9,136 @@ class Compartment {
     this.group = group;
   }
 
-  hazard() {
-    if (this.group === "E" || this.group === "F-1" || this.group === "F-2")
-      return true;
-    else 
-      return false;
+  get hazard() {  
+    var group = this.group;
+    return (group === "E" || group === "F-1" || group === "F-2") ? true : false;
   }
 
-  area() {
+  get area() {
     return this.h * this.w;
   }
 
-  ratio() {
-    var height = this.h;
-    var width = this.w;
-    if (height / width > width / height)
-      return height / width;
-    else
-      return width / height;
+  get ratio() {
+    return (this.h / this.w > this.w / this.h) ? this.h / this.w : this.w / this.h;
   }
 
   ratioCode() {
-    var r = this.ratio();
-    if (r < 3)
+    if (this.ratio < 3)
       return 1;
-    else if (r <= 10)
-      return 2;
     else
-      return 3;
+      return (this.ratio <= 10) ? 2 : 3;
   }
 
-  getAO() {
-    return (this.actOpns / this.area()) * 100;
+  get AO() {
+    return (this.actOpns / this.area) * 100;
   }
 
-  getUO() {
-    var spTable, maxLD, maxArea;
+  get UPO() {
+    var table, maxLD, maxArea;
     var LD1, LD2, area1, area2;
-    var a, a1, a2, a3, a4;
     var x, y, z, shift_y;
 
     if (this.sprk) {
       shift_y = 1;
       z = 0;
 
-      if (this.hazard()) {
-        spTable = tableE;
+      if (this.hazard) {
+        table = tableE;
         maxLD = 15;
         maxArea = 200;
       }
 
-      if (!this.hazard()) {
-        spTable = tableD;
+      if (!this.hazard) {
+        table = tableD;
         maxLD = 9;
         maxArea = 150;
       }
     }
 
-    if (!this.sprk) {
+    else {
       shift_y = 3;
       z = this.ratioCode();
       maxArea = 2000;
 
-      if (this.hazard()) {
-        spTable = tableC;
+      if (this.hazard) {
+        table = tableC;
         maxLD = 70;
       }
 
-      if (!this.hazard()) {
-        spTable = tableB;
+      if (!this.hazard) {
+        table = tableB;
         maxLD = 50;
       }
     }
 
     const isLDlarger = (element) => element > this.LD;
-    x = spTable[0].findIndex(isLDlarger) - 1;
-    LD1 = spTable[0][x];
-    LD2 = spTable[0][x + 1];
+    x = table[0].findIndex(isLDlarger) - 1;
+    LD1 = table[0][x];
+    LD2 = table[0][x + 1];
 
-    for (let j = 0; j < spTable.length; j++)
-      if (this.area() >= spTable[j][0] && z == spTable[j][1]) {
+    for (let j = 0; j < table.length; j++)
+      if (this.area >= table[j][0] && z == table[j][1]) {
         y = j;
-        area1 = spTable[y][0];
-        area2 = spTable[y + shift_y][0];
+        area1 = table[y][0];
+        area2 = table[y + shift_y][0];
       }
 
-    a1 = spTable[y][x];
-    a2 = spTable[y][x + 1];
-    a3 = spTable[y + shift_y][x];
-    a4 = spTable[y + shift_y][x + 1];
+    var a1 = table[y][x];
+    var a2 = table[y][x + 1];
+    var a3 = table[y + shift_y][x];
+    var a4 = table[y + shift_y][x + 1];
 
-    if (this.LD == LD1 && this.area() == area1)
-      a = a1;
+    if (this.LD == LD1 && this.area == area1)
+      return a1;
 
     else if (this.LD == LD1 || this.LD > maxLD)
-      a = (this.area() - area1) / (area2 - area1) * (a3 - a1) + a1;
+      return (this.area - area1) / (area2 - area1) * (a3 - a1) + a1;
 
-    else if (this.area() == area1 || this.area() > maxArea)
-      a = ((this.LD - LD1) / (LD2 - LD1)) * (a2 - a1) + a1;
+    else if (this.area == area1 || this.area > maxArea)
+      return ((this.LD - LD1) / (LD2 - LD1)) * (a2 - a1) + a1;
 
     else {
       var temp1 = ((this.LD - LD1) / (LD2 - LD1)) * (a2 - a1) + a1;
       var temp2 = ((this.LD - LD1) / (LD2 - LD1)) * (a4 - a3) + a3;
-      a = ((this.area() - area1) / (area2 - area1)) * (temp2 - temp1) + temp1;
+      return ((this.area - area1) / (area2 - area1)) * (temp2 - temp1) + temp1;
     }
-    return a;
   }
 
-  construction (p) {
-    if (this.getUO() >= 100)
+  minConstructionReq (columnIndex) {
+    if (this.UPO >= 100)
       return "none";
     
     else {
       const limits = [10, 25, 50, 100];
-      for (let i = 0; i < 4; i++)
-        if (this.getUO() <= limits[i]){
-          if (this.hazard())
-            return constTable[i + 4][p];
-          else
-            return constTable[i][p];
+      
+      const isAreaLarger = (areaLimit) => this.UPO <= areaLimit;
+      var i = limits.findIndex(isAreaLarger);
+
+      if (this.hazard)
+        return constTable[i + 4][columnIndex];
+      else
+        return constTable[i][columnIndex];
       }
-    }    
   }
+  
+  get frr () {
+    return this.minConstructionReq(0);
+  }
+
+  get construction () {
+    return this.minConstructionReq(1);
+  }
+
+  get cladding () {
+    return this.minConstructionReq(2);
+  }
+  
 }
 
-let comp1 = new Compartment(5, 5, 4, 10, false, "E"); // case 1
-let comp2 = new Compartment(3, 12, 5, 10, true, "E"); // case 2
-let comp3 = new Compartment(4, 10, 2.5, 8, false, "F-3"); // case 4
-let comp4 = new Compartment(3.2, 14.9, 5.2, 10, false, "E"); // case 4 - LD > 9
+let comp1 = new Compartment(2, 7.5, 2.5, 10, false, "C"); // case 1
+let comp2 = new Compartment(2, 7.5, 1.5, 10, true, "E"); // case 2
+let comp3 = new Compartment(3, 20, 2.5, 8, false, "F-3"); // case 4
+let comp4 = new Compartment(3, 20, 4.0, 10, true, "C"); // case 4 - LD > 9
 let comp5 = new Compartment(10, 1900, 13, 10, false, "F-1"); // case 4- areaMax, LD max
 let comp6 = new Compartment(10, 150, 10, 10, true, "C"); // case 4- areaMax, LD max
+let comp7 = new Compartment(0.2, 0.5, 1.1, 0, true, "F-2"); // 0 lot line

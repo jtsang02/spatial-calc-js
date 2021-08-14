@@ -150,12 +150,12 @@ const tableE = [
 ];
 
 const constTable = [
-  ['1h', 'Noncombustible', 'Noncombustible'],
-  ['1h', 'Combustible', 'Noncombustible'],
-  ['45min', 'Combustible', 'Noncombustible'],
-  ['45min', 'Combustible', 'Combustible'],
-  ['2h', 'Noncombustible', 'Noncombustible'],
-  ['2h', 'Combustible', 'Noncombustible'],
-  ['1h', 'Combustible', 'Noncombustible'],
-  ['1h', 'Combustible', 'Combustible']
-]
+  ["1h", "Noncombustible", "Noncombustible"],
+  ["1h", "Combustible", "Noncombustible"],
+  ["45min", "Combustible", "Noncombustible"],
+  ["45min", "Combustible", "Combustible"],
+  ["2h", "Noncombustible", "Noncombustible"],
+  ["2h", "Combustible", "Noncombustible"],
+  ["1h", "Combustible", "Noncombustible"],
+  ["1h", "Combustible", "Combustible"],
+];
