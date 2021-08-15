@@ -10,8 +10,7 @@ class Compartment {
   }
 
   get hazard() {  
-    var group = this.group;
-    return (group === "E" || group === "F-1" || group === "F-2") ? true : false;
+    return (this.group === "E" || this.group === "F-1" || this.group === "F-2") ? true : false;
   }
 
   get area() {

@@ -6,7 +6,16 @@ mobileBtn.addEventListener("click", () => {
   nav.classList.add("menu-btn");
 });
 
-//let comp1 = new Compartment(5, 5, 4, 10, true, "F-2"); // case 1
+var sprk = document.getElementById("sprk");
+var sprinklered = (sprk.checked) ? true : false; 
+
+var occupancy = document.getElementById("occupancy").nodeValue;
+var inputHeight = document.getElementById("height").nodeValue;
+var inputWidth = document.getElementById("width").nodeValue;
+var actualArea = document.getElementById("area-upo").nodeValue;
+var lmtDist = document.getElementById("ld").nodeValue;
+
+let testCompartment = new Compartment(inputHeight, inputWidth, actualArea, sprinklered, occupancy);
 
 mobileBtnExit.addEventListener("click", () => {
   nav.classList.remove("menu-btn");
