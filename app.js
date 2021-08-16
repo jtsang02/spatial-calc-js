@@ -7,7 +7,7 @@ const checkbox = document.getElementById("sprk-check");
 const choice = document.getElementById("occupancy");
 const heightInput = document.getElementById("height");
 const widthInput = document.getElementById("width");
-const AOInput = document.getElementById("area-upo");
+const aoInput = document.getElementById("area-upo");
 const ldInput = document.getElementById("ld");
 
 const limitToNumbers = (element) => { // restrict input keys
@@ -24,7 +24,7 @@ const limitToNumbers = (element) => { // restrict input keys
 
 limitToNumbers(heightInput);
 limitToNumbers(widthInput);
-limitToNumbers(AOInput);
+limitToNumbers(aoInput);
 limitToNumbers(ldInput);
 
 const clearInputs = () => { // clear all input fields
@@ -32,7 +32,7 @@ const clearInputs = () => { // clear all input fields
   heightInput.value = null;
   widthInput.value = null;
   ldInput.value = null;
-  AOInput.value = null;
+  aoInput.value = null;
   document.getElementById("ao-output").innerHTML = "";
   document.getElementById("upo-output").innerHTML = "";
   document.getElementById("frr-output").innerHTML = "";
