@@ -44,18 +44,18 @@
       <h1>Spatial separation calculator</h1>
     </div>
 
-    <div class = "container">
+    <div class="container">
       <div class="hero-input">
         <ul class="input-list">
-          <form action="">
+          <form action="" name="inputForm">
             <div class="form-group">
               <label for="sprk">Sprinklered
-                <input type="checkbox" id="sprk" sprk="sprk" />
+                <input type="checkbox" id="sprk-check" sprk="sprk-check" />
               </label>
             </div>
             <div class="form-group">
               <label for="occupancy">Occupancy</label>
-              <select name="occupancy" placeholder = "select" id="occupancy">
+              <select name="occupancy" placeholder="select" id="occupancy">
                 <option value="none" selected disabled></option>
                 <option value="A">Group A</option>
                 <option value="B">Group B</option>
@@ -69,37 +69,36 @@
             </div>
             <div class="form-group">
               <label for="height">Height</label>
-              <input type="number" placeholder = "height (m / ft)" id="height" height="height" min="0" />
+              <input type="number" placeholder="height (m / ft)" id="height" height="height" min="0" />
             </div>
             <div class="form-group">
               <label for="width">Width </label>
-              <input type="number" placeholder = "width (m / ft)" id="width" width="width" min="0" />
+              <input type="number" placeholder="width (m / ft)" id="width" width="width" min="0" />
             </div>
             <div class="form-group">
               <label for="area-upo">Area of Unprotected Openings</label>
-              <input type="number" placeholder = "area (sqm / sqft)" id="area-upo" area-upo="area-upo" min="0" />
+              <input type="number" placeholder="area (sqm / sqft)" id="area-upo" area-upo="area-upo" min="0" />
             </div>
             <div class="form-group">
               <label for="ld">Limiting Distance</label>
-              <input type="number" placeholder = "distance (m / ft)" id="ld" ld="ld" min="0" />
+              <input type="number" placeholder="distance (m / ft)" id="ld" ld="ld" min="0" />
             </div>
           </form>
         </ul>
       </div>
-      <!-- <input class="calculate-cta" type="button" id="calculate" value="Calculate" /> -->
 
       <div class="hero-output">
         <div class="table-header">Openings</div>
         <table class="blueTable" style="border:1px solid black;">
-      
+
           <tbody>
             <tr>
               <td class="table-content">Actual Unprotected Openings</td>
-              <td class="table-result">[actualUPO]</td>
+              <td class="table-result" id="ao-output"></td>
             </tr>
             <tr>
               <td class="table-content">Permitted Unprotected Openings</td>
-              <td class="table-result">[UPO]</td>
+              <td class="table-result" id="upo-output"></td>
             </tr>
           </tbody>
         </table>
@@ -109,21 +108,26 @@
             <tr>
               <td class="table-content">Fire Rating of Wall
               </td>
-              <td class="table-result">[frr]</td>
+              <td class="table-result" id="frr-output"></td>
             </tr>
             <tr>
               <td class="table-content">Construction</td>
-              <td class="table-result">[const]</td>
+              <td class="table-result" id="const-output"></td>
             </tr>
             <tr>
               <td class="table-content">Cladding
               </td>
-              <td class="table-result">[clad]</td>
+              <td class="table-result" id="cladding-output"></td>
             </tr>
           </tbody>
         </table>
         </table>
       </div>
+    </div>
+
+    <div class = "buttons">
+      <input class="calculate-cta" type="button" id="calculate-btn" value="Calculate" />
+      <input class="clear-cta" type="button" id="clear-btn" value="Clear" />
     </div>
 
   </section>
@@ -160,7 +164,7 @@
       </ul>
     </div>
   </section>
-<!--
+  <!--
   <section class="contact-section">
     <div class="container">
       <div class="contact">
@@ -172,7 +176,7 @@
       </div>
     </div>
   </section>
--->  
+-->
   <script src="tables.js"></script>
   <script src="compartment.js"></script>
   <script src="app.js"></script>

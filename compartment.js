@@ -1,5 +1,4 @@
 class Compartment {
-
   constructor(h, w, LD, actOpns, sprk, group) {
     this.h = h;
     this.w = w;
@@ -9,8 +8,10 @@ class Compartment {
     this.group = group;
   }
 
-  get hazard() {  
-    return (this.group === "E" || this.group === "F-1" || this.group === "F-2") ? true : false;
+  get hazard() {
+    return this.group === "E" || this.group === "F-1" || this.group === "F-2"
+      ? true
+      : false;
   }
 
   get area() {
@@ -18,18 +19,18 @@ class Compartment {
   }
 
   get ratio() {
-    return (this.h / this.w > this.w / this.h) ? this.h / this.w : this.w / this.h;
+    return (this.h / this.w > this.w / this.h)
+      ? this.h / this.w
+      : this.w / this.h;
   }
 
   ratioCode() {
-    if (this.ratio < 3)
-      return 1;
-    else
-      return (this.ratio <= 10) ? 2 : 3;
+    if (this.ratio < 3) return 1;
+    else return this.ratio <= 10 ? 2 : 3;
   }
 
   get AO() {
-    return (this.actOpns / this.area) * 100;
+    return isNaN(this.actOpns) ? 0 : (this.actOpns / this.area) * 100;
   }
 
   get UPO() {
@@ -52,9 +53,7 @@ class Compartment {
         maxLD = 9;
         maxArea = 150;
       }
-    }
-
-    else {
+    } else {
       shift_y = 3;
       z = this.ratioCode();
       maxArea = 2000;
@@ -87,15 +86,11 @@ class Compartment {
     var a3 = table[y + shift_y][x];
     var a4 = table[y + shift_y][x + 1];
 
-    if (this.LD == LD1 && this.area == area1)
-      return a1;
-
+    if (this.LD == LD1 && this.area == area1) return a1;
     else if (this.LD == LD1 || this.LD > maxLD)
-      return (this.area - area1) / (area2 - area1) * (a3 - a1) + a1;
-
+      return ((this.area - area1) / (area2 - area1)) * (a3 - a1) + a1;
     else if (this.area == area1 || this.area > maxArea)
       return ((this.LD - LD1) / (LD2 - LD1)) * (a2 - a1) + a1;
-
     else {
       var temp1 = ((this.LD - LD1) / (LD2 - LD1)) * (a2 - a1) + a1;
       var temp2 = ((this.LD - LD1) / (LD2 - LD1)) * (a4 - a3) + a3;
@@ -103,41 +98,27 @@ class Compartment {
     }
   }
 
-  minConstructionReq (columnIndex) {
-    if (this.UPO >= 100)
-      return "none";
-    
+  minConstructionReq(columnIndex) {
+    if (this.UPO >= 100) return "None";
     else {
       const limits = [10, 25, 50, 100];
-      
       const isAreaLarger = (areaLimit) => this.UPO <= areaLimit;
       var i = limits.findIndex(isAreaLarger);
 
-      if (this.hazard)
-        return constTable[i + 4][columnIndex];
-      else
-        return constTable[i][columnIndex];
-      }
+      if (this.hazard) return constTable[i + 4][columnIndex];
+      else return constTable[i][columnIndex];
+    }
   }
-  
-  get frr () {
+
+  get frr() {
     return this.minConstructionReq(0);
   }
 
-  get construction () {
+  get construction() {
     return this.minConstructionReq(1);
   }
 
-  get cladding () {
+  get cladding() {
     return this.minConstructionReq(2);
   }
-  
 }
-
-let comp1 = new Compartment(2, 7.5, 2.5, 10, false, "C"); // case 1
-let comp2 = new Compartment(2, 7.5, 1.5, 10, true, "E"); // case 2
-let comp3 = new Compartment(3, 20, 2.5, 8, false, "F-3"); // case 4
-let comp4 = new Compartment(3, 20, 4.0, 10, true, "C"); // case 4 - LD > 9
-let comp5 = new Compartment(10, 1900, 13, 10, false, "F-1"); // case 4- areaMax, LD max
-let comp6 = new Compartment(10, 150, 10, 10, true, "C"); // case 4- areaMax, LD max
-let comp7 = new Compartment(0.2, 0.5, 1.1, 0, true, "F-2"); // 0 lot line
