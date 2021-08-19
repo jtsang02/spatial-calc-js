@@ -109,6 +109,7 @@ section {
         width: 250px;
         margin: auto;
         padding: 0.5em;
+        font-weight: bold;
       }
 
       select {
@@ -121,6 +122,68 @@ section {
         width: 250px;
         height: 2.5em;
       }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 38px;
+        height: 12px;
+        margin-left: 8.5em;
+        vertical-align: middle;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      
+      input:checked + .slider {
+        background-color: var(--primary-color);
+      }
+      
+      input:focus + .slider {
+        box-shadow: 0 0 1px var(--primary-color);
+      }
+      
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+      
+      .slider.round {
+        border-radius: 34px;
+      }
+      
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
     }
   }
 
@@ -155,13 +218,13 @@ section {
       width: 400px;
       font-size: 0.9em;
       font-weight: bold;
-      color: #20272e;
+      color: black;
       text-align: left;
     }
 
-    .blueTable {
+    .mainTable {
       table-layout: fixed;
-      background-color: white;
+      background-color: rgb(255, 255, 255);
       width: 400px;
       border-collapse: collapse;
     }
@@ -170,19 +233,17 @@ section {
       font-size: 0.9em;
       text-align: left;
       width: 240px;
-      border: 1px solid black;
+      border-bottom: 1px solid black;
+      //border: 1px solid black;
       padding: 0.5em 0.2em;
     }
 
     .table-result {
       font-size: 0.9em;
       text-align: center;
-      border: 1px solid black;
+      border-bottom: 1px solid black;
+      //border: 1px solid black;
       padding: 0.5em 0.2em;
-    }
-
-    table.blueTable tr:nth-child(odd) {
-      background: #d0e4f5;
     }
   }
 }
@@ -209,7 +270,7 @@ section.features-section {
         position: absolute;
         width: 20px;
         height: 20px;
-        background-image: url("../images/bullet.svg");
+        background-image: url("../images/shield.svg");
         background-size: contain;
         margin-right: 0.5em;
       }
@@ -355,9 +416,6 @@ nav {
       margin: 0;
     }
 
-    li.current a {
-      font-weight: bold;
-    }
   }
 
   .hero {
@@ -399,5 +457,3 @@ nav {
     }
   }
 }
-
-// https://github.com/erikd234/Seven-Segment-String-Decoder

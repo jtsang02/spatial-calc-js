@@ -1,6 +1,3 @@
-const mobileBtn = document.getElementById("mobile-cta");
-const nav = document.querySelector("nav");
-const mobileBtnExit = document.getElementById("mobile-exit");
 const calculateBtn = document.getElementById("calculate-btn");
 const clearBtn = document.getElementById("clear-btn");
 const checkbox = document.getElementById("sprk-check");
@@ -40,10 +37,6 @@ const clearInputs = () => { // clear all input fields
   document.getElementById("cladding-output").innerHTML = "";
 };
 
-mobileBtn.addEventListener("click", () => {
-  nav.classList.add("menu-btn");
-});
-
 calculateBtn.addEventListener("click", () => {
   // read inputs
   let userSprk = checkbox.checked ? true : false,
@@ -80,10 +73,6 @@ calculateBtn.addEventListener("click", () => {
   }
 });
 
-clearBtn.addEventListener("click", () => {
+clearBtn.addEventListener("click", () => { 
   clearInputs();
-});
-
-mobileBtnExit.addEventListener("click", () => {
-  nav.classList.remove("menu-btn");
 });

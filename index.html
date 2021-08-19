@@ -8,6 +8,7 @@
   <link rel="icon" href="images/building512.png">
   <title>Spatial Calculator</title>
   <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/modal.css" />
 </head>
 
 <body>
@@ -18,20 +19,22 @@
         <img src="images/building512.png" alt="bldg logo">
         <ref="#">Spatial<span>Calculator</span>
       </a>
-
-
+      
       <img id="mobile-cta" class="mobile-menu" src="images/menu.svg" alt="open navigation" />
 
       <nav>
         <img id="mobile-exit" class="mobile-menu-exit" src="images/exit.svg" alt="close navigation" />
         <ul class="primary-nav">
-          <li class="current"><a href="#">Home</a></li>
-          <li><a href="#">Full Version</a></li>
-        </ul>
-
-        <ul class="secondary-nav">
-          <li><a href="#">Part 9</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="#" id="tempModal1">Full Version</a></li>
+          <li><a href="#" id="tempModal2">Part 9</a></li>
+          <li><a href="contact.html">Contact</a></li>
+           <!-- temp popup message -->
+          <div id="myModal" class="modal"> 
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Coming soon!</p>
+            </div>
+          </div>
         </ul>
       </nav>
     </div>
@@ -50,7 +53,10 @@
           <form action="" name="inputForm">
             <div class="form-group">
               <label for="sprk">Sprinklered
-                <input type="checkbox" id="sprk-check" sprk="sprk-check" />
+                <label class="switch">
+                  <input type="checkbox" id="sprk-check">
+                  <span class="slider round"></span>
+                </label>
               </label>
             </div>
             <div class="form-group">
@@ -69,19 +75,19 @@
             </div>
             <div class="form-group">
               <label for="height">Height</label>
-              <input type="number" placeholder="height (m / ft)" id="height" height="height" min="0" />
+              <input type="number" placeholder="height (m)" id="height" height="height" min="0" />
             </div>
             <div class="form-group">
               <label for="width">Width </label>
-              <input type="number" placeholder="width (m / ft)" id="width" width="width" min="0" />
+              <input type="number" placeholder="width (m)" id="width" width="width" min="0" />
             </div>
             <div class="form-group">
               <label for="area-upo">Area of Unprotected Openings</label>
-              <input type="number" placeholder="area (sqm / sqft)" id="area-upo" area-upo="area-upo" min="0" />
+              <input type="number" placeholder="area (m²)" id="area-upo" area-upo="area-upo" min="0" />
             </div>
             <div class="form-group">
               <label for="ld">Limiting Distance</label>
-              <input type="number" placeholder="distance (m / ft)" id="ld" ld="ld" min="0" />
+              <input type="number" placeholder="distance (m)" id="ld" ld="ld" min="0" />
             </div>
           </form>
         </ul>
@@ -89,8 +95,7 @@
 
       <div class="hero-output">
         <div class="table-header">Openings</div>
-        <table class="blueTable" style="border:1px solid black;">
-
+        <table class="mainTable" style="border:1px solid black;">
           <tbody>
             <tr>
               <td class="table-content">Actual Unprotected Openings</td>
@@ -101,9 +106,10 @@
               <td class="table-result" id="upo-output"></td>
             </tr>
           </tbody>
-        </table>
+
+        </table class="mainTable">
         <div class="table-header">Construction Requirements</div>
-        <table class="blueTable" style="border:1px solid black;">
+        <table class="mainTable" style="border:1px solid black;">
           <tbody>
             <tr>
               <td class="table-content">Fire Rating of Wall
@@ -125,7 +131,7 @@
       </div>
     </div>
 
-    <div class = "buttons">
+    <div class="buttons">
       <input class="calculate-cta" type="button" id="calculate-btn" value="Calculate" />
       <input class="clear-cta" type="button" id="clear-btn" value="Clear" />
     </div>
@@ -143,43 +149,11 @@
     </div>
   </section>
 
-  <section class="building-codes">
-    <div class="container">
-      <ul class="building-code-list">
-        <li>
-          <a href="https://www.bccodes.ca/building-code.html">
-            <img src="images/bcbc2018cover.jpg" alt="bcbc 2018" />
-          </a>
-        </li>
-        <li>
-          <a href="https://nrc-publications.canada.ca/eng/view/object/?id=c8876272-9028-4358-9b42-6974ba258d99">
-            <img src="images/2015_nbc_cover.jpg" alt="nbc 2015">
-          </a>
-        </li>
-        <li>
-          <a href="https://www.alberta.ca/building-codes-and-standards.aspx">
-            <img src="images/2014_abc_cover.jpg" alt="abc 2014">
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <!--
-  <section class="contact-section">
-    <div class="container">
-      <div class="contact">
-        <h2>Contact</h2>
-        <form action="">
-          <textarea name="message" id="message" cols="30" rows="10"></textarea>
-          <input type="submit" class="send-message-cta" value="Send message" />
-        </form>
-      </div>
-    </div>
-  </section>
--->
-  <script src="tables.js"></script>
-  <script src="compartment.js"></script>
-  <script src="app.js"></script>
+  <script src="src/index.js"></script>
+  <script src="src/tables.js"></script>
+  <script src="src/compartment.js"></script>
+  <script src="src/app.js"></script>
+
 </body>
 
 </html>

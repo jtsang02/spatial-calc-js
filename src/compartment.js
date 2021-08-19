@@ -1,3 +1,5 @@
+//import {tableB, tableC, tableD, tableE, constTable} from './src/tables.js';
+
 class Compartment {
   constructor(h, w, LD, actOpns, sprk, group) {
     this.h = h;
