@@ -7,7 +7,6 @@
   <meta sprk="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="images/building512.png">
   <title>Spatial Calculator</title>
-
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/modal.css" />
 </head>
@@ -15,11 +14,12 @@
 <body>
   <div class="navbar">
     <div class="container">
+
       <a class="logo" ref="#">
         <img src="images/building512.png" alt="bldg logo">
         <ref="#">Spatial<span>Calculator</span>
       </a>
-
+      
       <img id="mobile-cta" class="mobile-menu" src="images/menu.svg" alt="open navigation" />
 
       <nav>
@@ -27,9 +27,9 @@
         <ul class="primary-nav">
           <li><a href="#" id="tempModal1">Full Version</a></li>
           <li><a href="#" id="tempModal2">Part 9</a></li>
-          <!--<li><a href="contact.html">Contact</a></li>-->
-          <!-- temp popup message -->
-          <div id="myModal" class="modal">
+          <li><a href="contact.html">Contact</a></li>
+           <!-- temp popup message -->
+          <div id="myModal" class="modal"> 
             <div class="modal-content">
               <span class="close">&times;</span>
               <p>Coming soon!</p>
@@ -91,52 +91,68 @@
             </div>
           </form>
         </ul>
-        <p>
-        <div class="buttons">
-          <input class="calculate-cta" type="button" id="calculate-btn" value="Calculate" />
-        </div>
-        </p>
       </div>
 
       <div class="hero-output">
+        <div class="table-header">Openings</div>
+        <table class="mainTable" style="border:1px solid black;">
+          <tbody>
+            <tr>
+              <td class="table-content">Actual Unprotected Openings</td>
+              <td class="table-result" id="ao-output"></td>
+            </tr>
+            <tr>
+              <td class="table-content">Permitted Unprotected Openings</td>
+              <td class="table-result" id="upo-output"></td>
+            </tr>
+          </tbody>
 
-        <div class="form-group">
-          <label for="actual-openings">Actual Unprotected Openings</label>
-          <div class="result" id="ao-output"></div>
-        </div>
-
-        <div class="form-group">
-          <label class="table-content">Permitted Unprotected Openings</label>
-          <div class="result" id="upo-output"></div>
-        </div>
-
-        <div class="form-group">
-          <label for="frr">Fire Rating of Wall</label>
-          <div class="result" id="frr-output"></div>
-        </div>
-
-        <div class="form-group">
-          <label for="frr">Construction</label>
-          <div class="result" id="const-output"></div>
-        </div>
-
-        <div class="form-group">
-          <label for="frr">Cladding</label>
-          <div class="result" id="cladding-output"></div>
-        </div>
-   
-        <div class="buttons">
-          <input class="clear-cta" type="button" id="clear-btn" value="Clear" />
-        </div>
-  
-
+        </table class="mainTable">
+        <div class="table-header">Construction Requirements</div>
+        <table class="mainTable" style="border:1px solid black;">
+          <tbody>
+            <tr>
+              <td class="table-content">Fire Rating of Wall
+              </td>
+              <td class="table-result" id="frr-output"></td>
+            </tr>
+            <tr>
+              <td class="table-content">Construction</td>
+              <td class="table-result" id="const-output"></td>
+            </tr>
+            <tr>
+              <td class="table-content">Cladding
+              </td>
+              <td class="table-result" id="cladding-output"></td>
+            </tr>
+          </tbody>
+        </table>
+        </table>
       </div>
+    </div>
 
+    <div class="buttons">
+      <input class="calculate-cta" type="button" id="calculate-btn" value="Calculate" />
+      <input class="clear-cta" type="button" id="clear-btn" value="Clear" />
+    </div>
 
-      <script src="src/index.js"></script>
-      <script src="src/tables.js"></script>
-      <script src="src/compartment.js"></script>
-      <script src="src/app.js"></script>
+  </section>
+
+  <section class="features-section">
+    <div class="container">
+      <ul class="features-list">
+        <li>% Unprotected Openings</li>
+        <li>Actual Openings</li>
+        <li>Cladding Requirements</li>
+        <li>Construction Requirements</li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="src/index.js"></script>
+  <script src="src/tables.js"></script>
+  <script src="src/compartment.js"></script>
+  <script src="src/app.js"></script>
 
 </body>
 
