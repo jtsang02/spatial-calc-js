@@ -21,7 +21,7 @@ class Compartment {
   }
 
   get ratio() {
-    return (this.h / this.w > this.w / this.h)
+    return this.h / this.w > this.w / this.h
       ? this.h / this.w
       : this.w / this.h;
   }
@@ -55,7 +55,8 @@ class Compartment {
         maxLD = 9;
         maxArea = 150;
       }
-    } else {
+    } 
+    else {
       shift_y = 3;
       z = this.ratioCode();
       maxArea = 2000;
@@ -87,12 +88,19 @@ class Compartment {
     var a2 = table[y][x + 1];
     var a3 = table[y + shift_y][x];
     var a4 = table[y + shift_y][x + 1];
+    
+    if (this.LD < 1.2)
+      return 0;
 
-    if (this.LD == LD1 && this.area == area1) return a1;
+    else if (this.LD == LD1 && this.area == area1) 
+      return a1;
+
     else if (this.LD == LD1 || this.LD > maxLD)
       return ((this.area - area1) / (area2 - area1)) * (a3 - a1) + a1;
+
     else if (this.area == area1 || this.area > maxArea)
       return ((this.LD - LD1) / (LD2 - LD1)) * (a2 - a1) + a1;
+
     else {
       var temp1 = ((this.LD - LD1) / (LD2 - LD1)) * (a2 - a1) + a1;
       var temp2 = ((this.LD - LD1) / (LD2 - LD1)) * (a4 - a3) + a3;
@@ -101,7 +109,9 @@ class Compartment {
   }
 
   minConstructionReq(columnIndex) {
+
     if (this.UPO >= 100) return "None";
+
     else {
       const limits = [10, 25, 50, 100];
       const isAreaLarger = (areaLimit) => this.UPO <= areaLimit;

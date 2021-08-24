@@ -15,8 +15,7 @@ mobileBtnExit.addEventListener("click", () => {
 });
 
 const openPopUp = (event) => {
-  event.onclick = function () {
-    // When user clicks on button, open modal
+  event.onclick = function () {    // When user clicks on button, open modal
     modal.style.display = "block";
   };
 };
@@ -24,14 +23,19 @@ const openPopUp = (event) => {
 openPopUp(fullVersion);
 openPopUp(part9);
 
-span.onclick = function () {
-  // When the user clicks on <span> (x), close modal
+span.onclick = function () {  // When the user clicks on <span> (x), close modal
   modal.style.display = "none";
 };
 
-window.onclick = function (event) {
-  // When  user clicks anywhere outside of the modal, close
+window.onclick = function (event) {  // When  user clicks anywhere outside of the modal, close
   if (event.target == modal) {
     modal.style.display = "none";
   }
+};
+
+const claddingNote = () => {
+  if (document.getElementById("const-output").innerHTML == "Combustible/EMT/Noncombustible")
+    document.getElementById("emt-ftnote").style.display = "block";
+  else
+    document.getElementById("emt-ftnote").style.display = "none";
 };

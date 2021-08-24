@@ -70,9 +70,12 @@ calculateBtn.addEventListener("click", () => {
     document.getElementById("frr-output").innerHTML = comp.frr;
     document.getElementById("const-output").innerHTML = comp.construction;
     document.getElementById("cladding-output").innerHTML = comp.cladding;
+
+    claddingNote();
   }
 });
 
-clearBtn.addEventListener("click", () => { 
+clearBtn.addEventListener("click", () => {
+  document.getElementById("emt-ftnote").style.display = "none";
   clearInputs();
 });
