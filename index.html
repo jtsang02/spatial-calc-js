@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta sprk="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="icon" href="images/building512.png">
   <title>Spatial Calculator</title>
 
@@ -27,7 +28,6 @@
         <ul class="primary-nav">
           <li><a href="#" id="tempModal1">Full Version</a></li>
           <li><a href="#" id="tempModal2">Part 9</a></li>
-          <!--<li><a href="contact.html">Contact</a></li>-->
           <!-- temp popup message -->
           <div id="myModal" class="modal">
             <div class="modal-content">
@@ -48,6 +48,7 @@
     </div>
 
     <div class="container">
+
       <div class="hero-input">
         <ul class="input-list">
           <form action="" name="inputForm">
@@ -95,42 +96,47 @@
         <div class="buttons">
           <input class="calculate-cta" type="button" id="calculate-btn" value="Calculate" />
         </div>
-        </p>
+        <p>
       </div>
 
-      <div class="hero-output">
-        <div class="output-container">
-          <div class="form-group">
-            <label for="actual-openings">Actual Unprotected Openings</label>
-            <div class="result" id="ao-output"></div>
+      <div class="hero-output" id="hero-output">
+            <span class="close-output" id="close-output">&times;</span>
+            <div class="output-container">
+              <div class="form-group">
+                <label for="actual-openings">Actual Unprotected Openings</label>
+                <div class="result" id="ao-output"></div>
+              </div>
+              <div class="form-group">
+                <label class="table-content">Permitted Unprotected Openings</label>
+                <div class="result" id="upo-output"></div>
+              </div>
+              <div class="form-group">
+                <label for="frr">Fire Rating of Wall</label>
+                <div class="result" id="frr-output"></div>
+              </div>
+              <div class="form-group">
+                <label for="frr">Construction</label>
+                <div class="result" id="const-output"></div>
+              </div>
+              <div class="form-group">
+                <label for="frr">Cladding</label>
+                <div class="result" id="cladding-output"></div>
+              </div>
+              <div class="note" id="emt-ftnote">EMT - Encapsulated mass timber</div>
+            </div>
+            <div class="buttons">
+              <input class="clear-cta" type="button" id="clear-btn" value="Clear" />
+            </div>
+
           </div>
-          <div class="form-group">
-            <label class="table-content">Permitted Unprotected Openings</label>
-            <div class="result" id="upo-output"></div>
-          </div>
-          <div class="form-group">
-            <label for="frr">Fire Rating of Wall</label>
-            <div class="result" id="frr-output"></div>
-          </div>
-          <div class="form-group">
-            <label for="frr">Construction</label>
-            <div class="result" id="const-output"></div>
-          </div>
-          <div class="form-group">
-            <label for="frr">Cladding</label>
-            <div class="result" id="cladding-output"></div>
-          </div>
-          <div class="note" id="emt-ftnote">EMT - Encapsulated mass timber</div>
-        </div>
-        <div class="buttons">
-          <input class="clear-cta" type="button" id="clear-btn" value="Clear" />
         </div>
       </div>
+  </section>
 
-      <script src="src/index.js"></script>
-      <script src="src/tables.js"></script>
-      <script src="src/compartment.js"></script>
-      <script src="src/app.js"></script>
+  <script src="src/index.js"></script>
+  <script src="src/tables.js"></script>
+  <script src="src/compartment.js"></script>
+  <script src="src/app.js"></script>
 </body>
 
 </html>

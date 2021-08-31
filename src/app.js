@@ -1,5 +1,6 @@
 const calculateBtn = document.getElementById("calculate-btn");
 const clearBtn = document.getElementById("clear-btn");
+const closeBtn = document.getElementById("close-output");
 const checkbox = document.getElementById("sprk-check");
 const choice = document.getElementById("occupancy");
 const heightInput = document.getElementById("height");
@@ -72,10 +73,18 @@ calculateBtn.addEventListener("click", () => {
     document.getElementById("cladding-output").innerHTML = comp.cladding;
 
     claddingNote();
+
+    document.getElementById("hero-output").style.display = "block";
   }
 });
 
 clearBtn.addEventListener("click", () => {
   document.getElementById("emt-ftnote").style.display = "none";
   clearInputs();
+});
+
+closeBtn.addEventListener("click",() => {
+  clearInputs();
+  if (screen.width < 500)
+    document.getElementById("hero-output").style.display = "none"; 
 });

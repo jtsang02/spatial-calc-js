@@ -22,7 +22,7 @@
 .modal-content {
   background-color: #fefefe;
   color: black;
-  margin: 15% auto;
+  margin: 25% auto;
   padding: 20px;
   border: 1px solid #888;
   border-radius: 1em;
@@ -31,7 +31,7 @@
 }
 
 .close {
-  color: #aaa;
+  color: #1d1c1c;
   float: right;
   font-size: 28px;
   font-weight: bold;

@@ -1,5 +1,5 @@
 html {
-  font-size: 17px;
+  font-size: 1em;
 }
 
 :root {
@@ -37,7 +37,7 @@ body {
 .navbar .logo img {
   width: 1.4em;
   height: 1.4em;
-  margin-right: 5px;
+  margin-right: 0.3em;
 }
 .navbar nav {
   display: none;
@@ -68,7 +68,7 @@ section {
   text-align: center;
 }
 .hero .container {
-  width: 450px;
+  width: 95%;
   margin: auto;
 }
 .hero .heading .subhead {
@@ -87,32 +87,29 @@ section {
   margin-bottom: 0.1em;
 }
 .hero .hero-input {
+  position: relative;
   display: inline-block;
   margin: auto;
-  width: 350px;
+  width: 90%;
   padding: 1em;
   border-style: so;
+  border-radius: 1em;
   background-color: rgba(0, 0, 0, 0.9);
 }
 .hero .hero-input .form-group [type=checkbox] {
-  vertical-align: middle;
-  margin-left: 10em;
-  margin-top: 0em;
-  width: 1.2em;
-  height: 1.2em;
   background-color: rgba(0, 0, 0, 0.9);
 }
 .hero .hero-input .form-group label {
   display: block;
   text-align: left;
   font-size: 0.9em;
-  width: 250px;
+  width: 17.5em;
   margin: auto;
   margin-top: 0.3em;
   padding: 0.5em;
 }
 .hero .hero-input .form-group select {
-  width: 250px;
+  width: 19em;
   height: 2.5em;
   color: white;
   background-color: rgba(0, 0, 0, 0);
@@ -122,7 +119,7 @@ section {
   background-color: rgba(0, 0, 0, 0.9);
 }
 .hero .hero-input .form-group input {
-  width: 250px;
+  width: 18.5em;
   height: 2.5em;
   color: white;
   background-color: rgba(0, 0, 0, 0);
@@ -130,9 +127,9 @@ section {
 .hero .hero-input .form-group .switch {
   position: relative;
   display: inline-block;
-  width: 38px;
-  height: 12px;
-  margin-left: 8.3em;
+  width: 3em;
+  height: 1em;
+  margin-left: 9.5em;
   vertical-align: middle;
 }
 .hero .hero-input .form-group .switch input {
@@ -175,8 +172,7 @@ section {
 .hero .hero-input .form-group .slider.round:before {
   border-radius: 50%;
 }
-.hero .buttons .calculate-cta,
-.hero .buttons .clear-cta {
+.hero .buttons .calculate-cta, .hero .buttons .clear-cta {
   height: 50px;
   width: 200px;
   background: white;
@@ -185,51 +181,69 @@ section {
   padding: 0.2em 1.2em;
   font-size: 20px;
   border: 1px;
-  margin-top: 0.5em;
+  border-radius: 0.5em;
   font-weight: bold;
 }
-.hero .buttons .calculate-cta:hover,
-.hero .buttons .clear-cta:hover {
+.hero .buttons .calculate-cta:hover, .hero .buttons .clear-cta:hover {
   cursor: pointer;
   background: #cacaca;
 }
 .hero .hero-output {
-  display: inline-block;
-  width: 350px;
-  padding: 1em;
-  border-style: so;
-  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black w/ opacity */
 }
 .hero .hero-output .output-container {
-  height: 320px;
-  width: 250px;
-  margin: auto;
+  background-color: var(--primary-color);
+  color: black;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 1em;
   text-align: left;
+  width: 70%;
 }
-.hero .hero-output .form-group {
-  width: 250px;
-  margin: auto;
+.hero .hero-output .output-container label {
+  font-size: 1em;
+  font-weight: 550;
 }
-.hero .hero-output .form-group label {
-  display: block;
+.hero .hero-output .output-container .result {
+  color: black;
   font-size: 0.9em;
+  padding: 0.8em 0;
 }
-.hero .hero-output .form-group .result {
-  font-size: 0.9em;
-  height: 25px;
-  padding: 0.5em 0;
-  color: var(--primary-color);
-}
-.hero .hero-output .note {
+.hero .hero-output .output-container .note {
   display: none;
-  margin-top: 10px;
-  text-align: left;
-  font-size: 12px;
+  padding: 0.5em 0;
+  font-size: 0.7em;
 }
-
-iframe {
-  width: 100%;
-  height: 250px;
+.hero .hero-output .clear-cta {
+  display: none;
+}
+.hero .hero-output .close-output {
+  color: var(--primary-color);
+  font-size: 28px;
+  font-weight: bold;
+}
+.hero .hero-output .close-output:hover,
+.hero .hero-output .close-output:focus {
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 nav.menu-btn {
@@ -268,7 +282,62 @@ nav li a:hover {
   cursor: pointer;
 }
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 500px) {
+  .hero .hero-input {
+    border-radius: 1em 1em 0 0;
+  }
+  .hero .close {
+    display: none;
+  }
+  .hero .hero-output {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    width: 90%;
+    padding: 1em;
+    border-style: so;
+    border-radius: 0 0 1em 1em;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  .hero .hero-output .close-output {
+    display: none;
+  }
+  .hero .hero-output .output-container {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 0;
+    text-align: left;
+    width: 100%;
+    width: 17em;
+    margin: auto;
+    text-align: left;
+  }
+  .hero .hero-output .output-container .form-group label {
+    display: block;
+    padding: 0 0.5em;
+    font-size: 0.9em;
+    font-weight: normal;
+  }
+  .hero .hero-output .output-container .form-group .result {
+    font-size: 0.9em;
+    height: 1.5em;
+    padding: 0.5em;
+    color: var(--primary-color);
+  }
+  .hero .hero-output .output-container .note {
+    display: none;
+    text-align: left;
+    margin: 1em 0;
+    padding: 0 0.5em;
+    font-size: 0.7em;
+  }
+  .hero .hero-output .clear-cta {
+    display: inline-block;
+  }
+}
+@media only screen and (min-width: 730px) {
   .mobile-menu,
 .mobile-menu-exit {
     display: none;
@@ -305,27 +374,31 @@ nav li a:hover {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 1000px;
+    max-width: 60em;
   }
   .hero .hero-input {
+    display: block;
     width: 50%;
-    max-width: 400px;
-    height: 550px;
-    margin-right: 2em;
-  }
-  .hero .hero-input .calculate-cta {
-    margin-top: 1.5em;
+    max-width: 60%;
+    height: 35em;
+    margin-right: 5%;
+    border-radius: 1em;
   }
   .hero .hero-output {
+    display: block;
     width: 50%;
-    max-width: 400px;
-    height: 550px;
-    margin-left: 2em;
+    max-width: 60%;
+    height: 35em;
+    margin-left: 5%;
+    border-radius: 1em;
   }
   .hero .hero-output .output-container {
     margin-top: 1em;
   }
-  .hero .hero-output .clear-cta {
-    margin-top: 6.9em;
+  .hero .buttons {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5%;
   }
 }/*# sourceMappingURL=main.css.map */

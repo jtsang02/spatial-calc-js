@@ -2,6 +2,7 @@ const mobileBtn = document.getElementById("mobile-cta");
 const nav = document.querySelector("nav");
 const mobileBtnExit = document.getElementById("mobile-exit");
 var modal = document.getElementById("myModal");
+
 var fullVersion = document.getElementById("tempModal1");
 var part9 = document.getElementById("tempModal2");
 var span = document.getElementsByClassName("close")[0];
@@ -39,3 +40,4 @@ const claddingNote = () => {
   else
     document.getElementById("emt-ftnote").style.display = "none";
 };
+
