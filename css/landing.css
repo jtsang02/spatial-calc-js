@@ -77,7 +77,7 @@ section h1 .head {
   font-size: 1.75em;
   padding: 0.25em;
   text-transform: capitalize;
-  color: #b6cab8;
+  color: rgb(182, 202, 184);
 }
 section h1 .subhead {
   font-size: 1em;
@@ -165,17 +165,14 @@ nav li a:hover {
   section {
     max-width: 800px;
   }
-
   .mobile-menu,
-.mobile-menu-exit {
+  .mobile-menu-exit {
     display: none;
   }
-
   .navbar .container {
     display: grid;
     grid-template-columns: 180px auto;
   }
-
   .navbar nav {
     display: flex;
     justify-content: space-between;
@@ -185,17 +182,14 @@ nav li a:hover {
     width: 100%;
     padding: 0;
   }
-
   .navbar nav ul {
     display: flex;
   }
-
   .navbar nav a {
     color: var(--primary-color);
     font-size: 1em;
     padding: 0.1em 1em;
   }
-
   .navbar nav ul.primary-nav {
     margin: 0;
   }
