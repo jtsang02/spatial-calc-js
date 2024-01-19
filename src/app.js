@@ -40,7 +40,7 @@ const clearInputs = () => { // clear all input fields
 
 calculateBtn.addEventListener("click", () => {
   // read inputs
-  let userSprk = checkbox.checked ? true : false,
+  let userSprk = !!checkbox.checked,
     userGroup = choice.options[choice.selectedIndex].value,
     userH = parseFloat(heightInput.value),
     userW = parseFloat(widthInput.value),
@@ -54,27 +54,39 @@ calculateBtn.addEventListener("click", () => {
     alert("Enter valid numbers for height, width and limiting distance");
 
   else {
-    let comp = new Compartment(userH, userW, userLD, userAO, userSprk, userGroup);
 
-    function checkAO(str) {
-      return comp.AO > comp.UPO ? str.fontcolor("red") : str;
+    let reqbody = {
+      "h": userH,
+      "w": userW,
+      "LD": userLD,
+      "actOpns": userAO,
+      "sprk": userSprk,
+      "group": userGroup
+    };
+
+    const apiUrl = "http://ec2-3-134-88-136.us-east-2.compute.amazonaws.com:3000/calculate";
+
+    axios.post(apiUrl, reqbody).then((response) => {
+      let data = response.data;
+      document.getElementById("ao-output").innerHTML = checkAO(data.actualOpenings.toFixed(2) + " %");
+      document.getElementById("upo-output").innerHTML = data.unprotectedOpenings.toFixed(2) + " %";
+      document.getElementById("frr-output").innerHTML = data.frr;
+      document.getElementById("const-output").innerHTML = data.construction;
+      document.getElementById("cladding-output").innerHTML = data.cladding;
+      document.getElementById("hero-output").style.display = "block";
+
+      function checkAO(str) {
+        return data.actualOpenings > data.unprotectedOpenings ? str.fontcolor("red") : str;
+      }
     }
-
-    if (comp.AO > 100)
-      alert("Area of unprotected openings cannot exceed 100%");
-
-    const stringAO = checkAO(comp.AO.toFixed(2) + " %");
-    const stringUPO = comp.UPO.toFixed(2) + " %";
-
-    document.getElementById("ao-output").innerHTML = stringAO;
-    document.getElementById("upo-output").innerHTML = stringUPO;
-    document.getElementById("frr-output").innerHTML = comp.frr;
-    document.getElementById("const-output").innerHTML = comp.construction;
-    document.getElementById("cladding-output").innerHTML = comp.cladding;
-
-    claddingNote();
-
-    document.getElementById("hero-output").style.display = "block";
+    ).catch((error) => {
+      if (error.response.status == 400) {
+        alert(error.response.data.errors[0]);
+      }
+      else {
+        alert("Something went wrong. Please try again later.");
+      }
+    });
   }
 });
 
@@ -83,8 +95,8 @@ clearBtn.addEventListener("click", () => {
   clearInputs();
 });
 
-closeBtn.addEventListener("click",() => {
+closeBtn.addEventListener("click", () => {
   clearInputs();
   if (screen.width < 500)
-    document.getElementById("hero-output").style.display = "none"; 
+    document.getElementById("hero-output").style.display = "none";
 });
