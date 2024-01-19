@@ -11,10 +11,13 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   
+
+
   
   .modal-content {  // Modal Content/Box 
     background-color: #fefefe;
-    margin: 15% auto; // 15% from the top and centered 
+    color: black;
+    margin: 25% auto; // 15% from the top and centered 
     padding: 20px;
     border: 1px solid #888;
     border-radius: 1em;
@@ -23,7 +26,7 @@
   }
   
   .close {
-    color: #aaa;
+    color: rgb(29, 28, 28);
     float: right;
     font-size: 28px;
     font-weight: bold;

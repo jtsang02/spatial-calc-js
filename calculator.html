@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="images/building512.png">
+  <title>SpatialCalculator</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/modal.css" />
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <img src="images/building512.png" alt="bldg logo">
+        <ref="#">Spatial<span>Calculator</span>
+      </a>
+
+      <img id="mobile-cta" class="mobile-menu" src="images/menu.svg" alt="open navigation" />
+
+      <nav>
+        <img id="mobile-exit" class="mobile-menu-exit" src="images/exit.svg" alt="close navigation" />
+        <ul class="primary-nav">
+          <li><a href="#" id="tempModal1">Full Version</a></li>
+          <li><a href="#" id="tempModal2">Part 9</a></li>
+          <!-- temp popup message -->
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Coming soon!</p>
+            </div>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <section class="hero" style="background-image: url('./images/background.jpg');">
+
+    <div class="heading">
+      <p class="subhead">NBC 2015</p>
+      <h1>Spatial separation calculator</h1>
+    </div>
+
+    <div class="container">
+
+      <div class="hero-input">
+        <ul class="input-list">
+          <form action="" name="inputForm">
+            <div class="form-group">
+              <label for="sprk">Sprinklered
+                <label class="switch">
+                  <input type="checkbox" id="sprk-check">
+                  <span class="slider round"></span>
+                </label>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="occupancy">Occupancy</label>
+              <select name="occupancy" placeholder="select" id="occupancy">
+                <option value="none" selected disabled></option>
+                <option value="A">Group A</option>
+                <option value="B">Group B</option>
+                <option value="C">Group C</option>
+                <option value="D">Group D</option>
+                <option value="E">Group E</option>
+                <option value="F-1">Group F, Division 1</option>
+                <option value="F-2">Group F, Division 2</option>
+                <option value="F-3">Group F, Division 3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="height">Height</label>
+              <input type="number" placeholder="height (m)" id="height" height="height" min="0" />
+            </div>
+            <div class="form-group">
+              <label for="width">Width </label>
+              <input type="number" placeholder="width (m)" id="width" width="width" min="0" />
+            </div>
+            <div class="form-group">
+              <label for="area-upo">Area of Unprotected Openings</label>
+              <input type="number" placeholder="area (m²)" id="area-upo" area-upo="area-upo" min="0" />
+            </div>
+            <div class="form-group">
+              <label for="ld">Limiting Distance</label>
+              <input type="number" placeholder="distance (m)" id="ld" ld="ld" min="0" />
+            </div>
+          </form>
+        </ul>
+        <p>
+        <div class="buttons">
+          <input class="calculate-cta" type="button" id="calculate-btn" value="Calculate" />
+        </div>
+        <p>
+      </div>
+
+      <div class="hero-output" id="hero-output">
+            <span class="close-output" id="close-output">&times;</span>
+            <div class="output-container">
+              <div class="form-group">
+                <label for="actual-openings">Actual Unprotected Openings</label>
+                <div class="result" id="ao-output"></div>
+              </div>
+              <div class="form-group">
+                <label class="table-content">Permitted Unprotected Openings</label>
+                <div class="result" id="upo-output"></div>
+              </div>
+              <div class="form-group">
+                <label for="frr">Fire Rating of Wall</label>
+                <div class="result" id="frr-output"></div>
+              </div>
+              <div class="form-group">
+                <label for="frr">Construction</label>
+                <div class="result" id="const-output"></div>
+              </div>
+              <div class="form-group">
+                <label for="frr">Cladding</label>
+                <div class="result" id="cladding-output"></div>
+              </div>
+              <div class="note" id="emt-ftnote">EMT - Encapsulated mass timber</div>
+            </div>
+            <div class="buttons">
+              <input class="clear-cta" type="button" id="clear-btn" value="Clear" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <script src="src/index.js"></script>
+  <script src="src/tables.js"></script>
+  <script src="src/compartment.js"></script>
+  <script src="src/app.js"></script>
+</body>
+
+</html>

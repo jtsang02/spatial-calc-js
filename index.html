@@ -4,22 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta sprk="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="icon" href="images/building512.png">
-  <title>Spatial Calculator</title>
-  <link rel="stylesheet" href="css/main.css" />
+  <title>SpatialCalculator</title>
+
+  <link rel="stylesheet" href="css/landing.css" />
   <link rel="stylesheet" href="css/modal.css" />
+  </script>
+
 </head>
 
 <body>
   <div class="navbar">
     <div class="container">
-
       <a class="logo" ref="#">
         <img src="images/building512.png" alt="bldg logo">
         <ref="#">Spatial<span>Calculator</span>
       </a>
-      
+
       <img id="mobile-cta" class="mobile-menu" src="images/menu.svg" alt="open navigation" />
 
       <nav>
@@ -27,9 +30,8 @@
         <ul class="primary-nav">
           <li><a href="#" id="tempModal1">Full Version</a></li>
           <li><a href="#" id="tempModal2">Part 9</a></li>
-          <li><a href="contact.html">Contact</a></li>
-           <!-- temp popup message -->
-          <div id="myModal" class="modal"> 
+          <!-- temp popup message -->
+          <div id="myModal" class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>
               <p>Coming soon!</p>
@@ -42,117 +44,77 @@
 
   <section class="hero">
 
-    <div class="heading">
-      <p class="subhead">NBC 2015</p>
-      <h1>Spatial separation calculator</h1>
-    </div>
-
     <div class="container">
-      <div class="hero-input">
-        <ul class="input-list">
-          <form action="" name="inputForm">
-            <div class="form-group">
-              <label for="sprk">Sprinklered
-                <label class="switch">
-                  <input type="checkbox" id="sprk-check">
-                  <span class="slider round"></span>
-                </label>
-              </label>
-            </div>
-            <div class="form-group">
-              <label for="occupancy">Occupancy</label>
-              <select name="occupancy" placeholder="select" id="occupancy">
-                <option value="none" selected disabled></option>
-                <option value="A">Group A</option>
-                <option value="B">Group B</option>
-                <option value="C">Group C</option>
-                <option value="D">Group D</option>
-                <option value="E">Group E</option>
-                <option value="F-1">Group F, Division 1</option>
-                <option value="F-2">Group F, Division 2</option>
-                <option value="F-3">Group F, Division 3</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="height">Height</label>
-              <input type="number" placeholder="height (m)" id="height" height="height" min="0" />
-            </div>
-            <div class="form-group">
-              <label for="width">Width </label>
-              <input type="number" placeholder="width (m)" id="width" width="width" min="0" />
-            </div>
-            <div class="form-group">
-              <label for="area-upo">Area of Unprotected Openings</label>
-              <input type="number" placeholder="area (m²)" id="area-upo" area-upo="area-upo" min="0" />
-            </div>
-            <div class="form-group">
-              <label for="ld">Limiting Distance</label>
-              <input type="number" placeholder="distance (m)" id="ld" ld="ld" min="0" />
-            </div>
-          </form>
-        </ul>
+
+      <h1>
+        <div class="head">Spatial separation calculator</div>
+        <div class="subhead">NBC 2015</div>
+      </h1>
+
+      <div class="main-body">
+        <h2>Concept</h2>
+        <div class="paragraph">
+          The concept of spatial separation is to ensure that buildings are distanced far apart enough so that fire is
+          unlikely to
+          spread from one building to another. The National Building Code of Canada (NBC 2015),
+          Ontario
+          Building
+          Code (OBC 2017), Manitoba Building Code (MBC 2010), British Columbia Building Code (BCBC 2018), and Alberta
+          Building Code (ABC 2014) include tables from which
+          the percentage of <em>unprotected openings</em> that are permitted in a building or compartment are
+          calculated. Construction requirements for the <em>exposing building face</em> are prescribed based on the
+          permitted area of unprotected openings.
+        </div>
+        <h2>Code References</h2>
+
+        <h3>Part 3</h3>
+        <div class="paragraph">
+          Subsection 3.2.3 prescribes percentage limits for <em>unprotected openings</em> for buildings classified under
+          Part 3 of
+          the
+          Building Code. Tables 3.2.3.1.B and 3.2.3.1.C provide values for unsprinklered Part 3 buildings, and Tables
+          3.2.3.1.D and 3.2.3.1.E provide values for sprinklered buildings.
+
+          <p>Article 3.2.3.7 prescribes construction requirements for the <em><em>exposing building face</em></em> based
+            on the
+            permitted
+            <em>unprotected openings</em> calculated from the applicable table.
+          </p>
+          <div class="paragraph"></div>
+        </div>
+        <h2>Calculations</h2>
+        <div class="paragraph">
+          Area of <em>unprotected openings</em> permitted is based on two factors:
+
+          <p>1. Area of the <em><em>exposing building face</em></em> of the fire compartment.</p>
+          <p>2. Limiting distance measured to the property line, designated imaginary line, or centerline of a street.
+          </p>
+
+          Where the limiting distance or <em><em>exposing building face</em></em> area is between values on the
+          respective table,
+          the
+          calculator will interpolate between the values. Simply enter the width, height and limiting distance of the
+          fire
+          compartment and the calculator will output the permitted <em>unprotected openings</em> and construction
+          requirements
+          derived from Table 3.2.3.7.
+        </div>
+
+        <p class="note">*Italicized are Building Code defined terms. Refer to Section 1.4 of the Building Code.</p>
+
       </div>
 
-      <div class="hero-output">
-        <div class="table-header">Openings</div>
-        <table class="mainTable" style="border:1px solid black;">
-          <tbody>
-            <tr>
-              <td class="table-content">Actual Unprotected Openings</td>
-              <td class="table-result" id="ao-output"></td>
-            </tr>
-            <tr>
-              <td class="table-content">Permitted Unprotected Openings</td>
-              <td class="table-result" id="upo-output"></td>
-            </tr>
-          </tbody>
 
-        </table class="mainTable">
-        <div class="table-header">Construction Requirements</div>
-        <table class="mainTable" style="border:1px solid black;">
-          <tbody>
-            <tr>
-              <td class="table-content">Fire Rating of Wall
-              </td>
-              <td class="table-result" id="frr-output"></td>
-            </tr>
-            <tr>
-              <td class="table-content">Construction</td>
-              <td class="table-result" id="const-output"></td>
-            </tr>
-            <tr>
-              <td class="table-content">Cladding
-              </td>
-              <td class="table-result" id="cladding-output"></td>
-            </tr>
-          </tbody>
-        </table>
-        </table>
-      </div>
+
+      <p>
+        <a href="calculator.html"><input class="calculate-cta" type="button" id="calculate-btn" value="Start!" /></a>
+      </p>
+
     </div>
 
-    <div class="buttons">
-      <input class="calculate-cta" type="button" id="calculate-btn" value="Calculate" />
-      <input class="clear-cta" type="button" id="clear-btn" value="Clear" />
-    </div>
-
-  </section>
-
-  <section class="features-section">
-    <div class="container">
-      <ul class="features-list">
-        <li>% Unprotected Openings</li>
-        <li>Actual Openings</li>
-        <li>Cladding Requirements</li>
-        <li>Construction Requirements</li>
-      </ul>
-    </div>
   </section>
 
   <script src="src/index.js"></script>
-  <script src="src/tables.js"></script>
-  <script src="src/compartment.js"></script>
-  <script src="src/app.js"></script>
 
 </body>
 
